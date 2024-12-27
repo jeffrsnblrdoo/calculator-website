@@ -1,13 +1,18 @@
-const textarea = document.querySelector("textarea");
-const buttons = document.querySelectorAll("button");
-const numbers = document.getElementsByClassName("number");
+const screen = document.getElementById("screen");
 
-console.log(numbers);
+function buttonPressed(value) {
+    const maxLength = screen.getAttribute("maxlength");
 
-for (let i = 0; i < numbers.length; i++) {
-    numbers[i].addEventListener("click", buttonPressed);
+    if (screen.value.length < maxLength) {
+        screen.value += value;
+    }
 }
 
-function buttonPressed(number) {
-    textarea.innerHTML = number;
+function reset() {
+    const screen = document.getElementById("screen");
+    screen.value = "";
+}
+
+function deleteNumber() {
+    screen.value = screen.value.slice(0, -1);
 }
